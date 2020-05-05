@@ -1,5 +1,6 @@
 package com.xmb.auth.auth.dto;
 
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
@@ -10,6 +11,8 @@ import lombok.Data;
 @Data
 public class CheckoutPasswordDTO {
 
+    @ApiModelProperty("手机号")
     private String mobile;
+    @ApiModelProperty("密码")
     private String password;
 }

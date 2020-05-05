@@ -12,7 +12,7 @@
     <parent>
         <groupId>com.xmb.common</groupId>
         <artifactId>x-common</artifactId>
-        <version>1.0.5-SNAPSHOT</version>
+        <version>1.0.6-SNAPSHOT</version>
         <relativePath />
     </parent>
 
@@ -23,15 +23,14 @@
     <dependencies>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.xmb.common</groupId>
+            <artifactId>x-common-core</artifactId>
+            <version>1.0.6-SNAPSHOT</version>
         </dependency>
 
-        <!--   mybatis plus     -->
         <dependency>
-            <groupId>com.baomidou</groupId>
-            <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>${mybatis-plus-boot-starter.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
     </dependencies>

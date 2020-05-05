@@ -1,6 +1,6 @@
 package com.xmb.auth.auth.service.impl;
 
-import com.xmb.auth.utils.MD5Utils;
+import com.xmb.common.utils.MD5Utils;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xmb.auth.auth.dao.SysUserDao;

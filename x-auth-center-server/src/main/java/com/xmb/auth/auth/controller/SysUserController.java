@@ -1,7 +1,7 @@
 package com.xmb.auth.auth.controller;
 
 import com.xmb.auth.auth.dto.CheckoutPasswordDTO;
-import com.xmb.auth.network.Result;
+import com.xmb.common.network.Result;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
