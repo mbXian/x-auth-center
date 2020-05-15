@@ -14,6 +14,11 @@ public class RedisKeys {
     public static final String AUTH_TOKEN = "auth_token_";
 
     /**
+     * session过期时间
+     */
+    public static long expireTime = 60;
+
+    /**
      * 获取配置文件信息
      * @param key
      * @return

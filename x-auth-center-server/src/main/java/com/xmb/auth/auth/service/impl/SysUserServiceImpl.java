@@ -66,7 +66,9 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
             throw AuthException.ERROR_UNKNOW;
         }
 
-        SysUserTokenDto sysUserTokenDto = sysUserTokenService.createToken(sysUserEntity);
+        SysUserTokenDto sysUserTokenDto = new SysUserTokenDto();
+        sysUserTokenDto.setUserId(sysUserEntity.getId());
+        sysUserTokenDto.setToken(SecurityUtils.getSubject().getSession().getId().toString());
         return sysUserTokenDto;
     }
 

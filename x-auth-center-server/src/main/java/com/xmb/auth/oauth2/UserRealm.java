@@ -1,14 +1,12 @@
 package com.xmb.auth.oauth2;
 
 import com.alibaba.fastjson.JSON;
-import com.xmb.auth.auth.dto.SysUserTokenDto;
 import com.xmb.auth.auth.entity.SysPermissionEntity;
 import com.xmb.auth.auth.entity.SysRoleEntity;
 import com.xmb.auth.auth.service.ShiroService;
 import com.xmb.auth.auth.entity.SysUserEntity;
 import com.xmb.auth.auth.service.SysPermissionService;
 import com.xmb.auth.auth.service.SysRoleService;
-import com.xmb.auth.exception.AuthException;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
@@ -17,7 +15,6 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -64,6 +61,7 @@ public class UserRealm extends AuthorizingRealm {
                 permsSet.add(sysPermissionEntity.getPermission());
             }
         }
+
         //将查到的权限和角色分别传入authorizationInfo中
         authorizationInfo.setStringPermissions(permsSet);
         authorizationInfo.setRoles(rolesSet);
@@ -88,12 +86,12 @@ public class UserRealm extends AuthorizingRealm {
 //            throw AuthException.TOKEN_OUT_TIME;
 //        }
         //查询用户信息
-        SysUserEntity userEntity = shiroService.selectUserByName(userName);
-        log.info("user = {}", JSON.toJSONString(userEntity));
+        SysUserEntity sysUserEntity = shiroService.selectUserByName(userName);
+        log.info("sysUserEntity = {}", JSON.toJSONString(sysUserEntity));
         SimpleAuthenticationInfo simpleAuthenticationInfo = new SimpleAuthenticationInfo(
-                userEntity, // 用户名
-                userEntity.getPassword(), // 密码
-                ByteSource.Util.bytes(userEntity.getSalt()), // salt=username+salt
+                sysUserEntity, // 用户名
+                sysUserEntity.getPassword(), // 密码
+                ByteSource.Util.bytes(sysUserEntity.getSalt()), // salt=username+salt
                 getName() // realm name
         );
         return simpleAuthenticationInfo;
