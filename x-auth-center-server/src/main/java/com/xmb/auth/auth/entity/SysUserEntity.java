@@ -25,6 +25,10 @@ public class SysUserEntity implements Serializable {
 	@TableId
 	private Long id;
 	/**
+	 * 用户名
+	 */
+	private String userName;
+	/**
 	 * 名称
 	 */
 	private String name;
@@ -32,6 +36,10 @@ public class SysUserEntity implements Serializable {
 	 * 手机号
 	 */
 	private String mobile;
+	/**
+	 * 盐
+	 */
+	private String salt;
 	/**
 	 * 密码（MD5）
 	 */

@@ -3,6 +3,8 @@ package com.xmb.auth.auth.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xmb.auth.auth.entity.SysPermissionEntity;
 
+import java.util.List;
+
 /**
  * 权限表
  *
@@ -12,5 +14,11 @@ import com.xmb.auth.auth.entity.SysPermissionEntity;
  */
 public interface SysPermissionService extends IService<SysPermissionEntity> {
 
+    /**
+     * 查询角色的所有权限
+     * @param roleId
+     * @return
+     */
+    List<SysPermissionEntity> selectSysPermissionByRoleId(Long roleId);
 }
 

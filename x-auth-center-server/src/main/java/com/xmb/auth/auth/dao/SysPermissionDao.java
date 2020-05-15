@@ -3,6 +3,9 @@ package com.xmb.auth.auth.dao;
 import com.xmb.auth.auth.entity.SysPermissionEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * 权限表
@@ -13,5 +16,10 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface SysPermissionDao extends BaseMapper<SysPermissionEntity> {
-	
+    /**
+     * 查询角色的所有权限
+     * @param roleId
+     * @return
+     */
+    List<SysPermissionEntity> selectSysPermissionByRoleId(@Param("roleId") Long roleId);
 }

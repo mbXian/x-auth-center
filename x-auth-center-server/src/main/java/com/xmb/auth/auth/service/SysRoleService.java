@@ -3,6 +3,8 @@ package com.xmb.auth.auth.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xmb.auth.auth.entity.SysRoleEntity;
 
+import java.util.List;
+
 /**
  * 角色表
  *
@@ -12,5 +14,11 @@ import com.xmb.auth.auth.entity.SysRoleEntity;
  */
 public interface SysRoleService extends IService<SysRoleEntity> {
 
+    /**
+     * 根据用户id查询角色
+     * @param userId
+     * @return
+     */
+    List<SysRoleEntity> selectSysRoleByUserId(Long userId);
 }
 

@@ -8,6 +8,7 @@
         <module>x-auth-center-server</module>
         <module>x-auth-center-data</module>
         <module>x-auth-center-api</module>
+        <module>x-auth-center-plugin</module>
     </modules>
 
     <parent>

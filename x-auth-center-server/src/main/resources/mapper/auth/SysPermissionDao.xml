@@ -16,5 +16,18 @@
         <result property="deleted" column="deleted"/>
     </resultMap>
 
+    <select id="selectSysPermissionByRoleId" resultType="com.xmb.auth.auth.entity.SysPermissionEntity">
 
+        SELECT
+            sp.*
+        FROM
+            sys_role_permission srp
+            LEFT JOIN sys_permission sp ON sp.id = srp.permission_id
+        WHERE
+            srp.deleted = 0
+            AND sp.deleted = 0
+            AND srp.role_id = #{roleId}
+        GROUP BY
+            sp.id
+    </select>
 </mapper>
