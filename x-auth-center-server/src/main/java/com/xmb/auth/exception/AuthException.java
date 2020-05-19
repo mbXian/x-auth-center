@@ -31,8 +31,8 @@ public class AuthException extends BizException implements Serializable {
     public static final AuthException TOKEN_GENERATOR_ERROR = new AuthException(10000004, "生成Token失败!");
     public static final AuthException ACCOUNT_FROZEN = new AuthException(10000005, "账号已被锁定,请联系管理员");
     public static final AuthException ERROR_UNKNOW = new AuthException(10000006, "未知错误");
+    public static final AuthException PARAM_ERROR = new AuthException(10000007, "参数错误");
 
-    public static final AuthException UN_AUTHORIZED_EXCEPTION = new AuthException(10000007,"权限不足");
 
     public static final AuthException INCONSISTENT_PASSWORD_EXCEPTION = new AuthException(10000008,"密码不一致");
 

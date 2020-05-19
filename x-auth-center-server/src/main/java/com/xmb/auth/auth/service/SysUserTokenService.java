@@ -26,6 +26,25 @@ public interface SysUserTokenService {
 	SysUserTokenDto createToken(SysUserEntity user);
 
 	/**
+	 * 保存用户token
+	 * @param sysUserEntity
+	 * @param token
+	 */
+	void saveUserToken(SysUserEntity sysUserEntity, String token);
+
+	/**
+	 * 根据token查询用户
+	 * @return
+	 */
+	SysUserEntity getUserByToken(String token);
+
+	/**
+	 * 删除用户token
+	 * @param sysUserEntity
+	 */
+	void deleteUserToken(SysUserEntity sysUserEntity);
+
+	/**
 	 * 退出，修改token值
 	 * @param userId  用户ID
 	 */

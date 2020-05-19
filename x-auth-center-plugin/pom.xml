@@ -11,4 +11,12 @@
 
     <artifactId>x-auth-center-plugin</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.xmb.auth-center</groupId>
+            <artifactId>x-auth-center-server</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+
+    </dependencies>
 </project>

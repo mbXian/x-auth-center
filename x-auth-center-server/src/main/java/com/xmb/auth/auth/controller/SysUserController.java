@@ -53,4 +53,11 @@ public class SysUserController {
         sysUserService.logout();
         return Result.ok();
     }
+
+    @ApiOperation(value = "根据手机号查询",notes = "根据手机号查询",consumes = "application/json")
+    @PostMapping("/queryByMobile")
+    public Result queryByMobile() {
+
+        return Result.ok(sysUserService.queryByMobile("18824140606"));
+    }
 }

@@ -42,7 +42,7 @@ public class UserRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        log.info("授权doGetAuthorizationInfo params = " + JSON.toJSONString(principals));
+        log.info("授权 doGetAuthorizationInfo params = " + JSON.toJSONString(principals));
         //获取用户ID
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         SysUserEntity sysUserEntity = (SysUserEntity) principals.getPrimaryPrincipal();
@@ -77,14 +77,9 @@ public class UserRealm extends AuthorizingRealm {
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        log.info("认证登录doGetAuthenticationInfo params = {}", JSON.toJSONString(authenticationToken));
+        log.info("认证登录 doGetAuthenticationInfo params = {}", JSON.toJSONString(authenticationToken));
         String userName = (String) authenticationToken.getPrincipal();
-//        //根据accessToken，查询用户信息
-//        SysUserTokenDto tokenEntity = shiroService.queryByToken(accessToken);
-//        //token失效
-//        if(tokenEntity == null || tokenEntity.getExpireTime().getTime() < System.currentTimeMillis()){
-//            throw AuthException.TOKEN_OUT_TIME;
-//        }
+
         //查询用户信息
         SysUserEntity sysUserEntity = shiroService.selectUserByName(userName);
         log.info("sysUserEntity = {}", JSON.toJSONString(sysUserEntity));

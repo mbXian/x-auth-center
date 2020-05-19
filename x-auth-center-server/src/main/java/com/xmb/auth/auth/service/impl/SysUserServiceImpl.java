@@ -8,6 +8,7 @@ import com.xmb.auth.auth.entity.SysUserEntity;
 import com.xmb.auth.auth.service.SysUserTokenService;
 import com.xmb.auth.exception.AuthException;
 import com.xmb.common.utils.MD5Utils;
+import com.xmb.common.utils.RedisUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
 
     @Autowired
     private SysUserTokenService sysUserTokenService;
+    @Autowired
+    private RedisUtils redisUtils;
 
     /**
      * 验证手机号和密码是否匹配
@@ -66,9 +69,14 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
             throw AuthException.ERROR_UNKNOW;
         }
 
+        String token = SecurityUtils.getSubject().getSession().getId().toString();
+
+        //保存token
+        sysUserTokenService.saveUserToken(sysUserEntity, token);
+
         SysUserTokenDto sysUserTokenDto = new SysUserTokenDto();
         sysUserTokenDto.setUserId(sysUserEntity.getId());
-        sysUserTokenDto.setToken(SecurityUtils.getSubject().getSession().getId().toString());
+        sysUserTokenDto.setToken(token);
         return sysUserTokenDto;
     }
 
@@ -77,6 +85,14 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
      */
     @Override
     public void logout() {
+
+        String token = SecurityUtils.getSubject().getSession().getId().toString();
+        SysUserEntity sysUserEntity = sysUserTokenService.getUserByToken(token);
+
+        if (sysUserEntity != null) {
+
+            sysUserTokenService.deleteUserToken(sysUserEntity);
+        }
 
         SecurityUtils.getSubject().logout();
     }

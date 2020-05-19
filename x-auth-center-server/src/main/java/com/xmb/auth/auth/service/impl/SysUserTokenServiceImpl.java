@@ -11,14 +11,16 @@ package com.xmb.auth.auth.service.impl;
 import com.xmb.auth.auth.dto.SysUserTokenDto;
 import com.xmb.auth.auth.service.SysUserTokenService;
 import com.xmb.auth.auth.entity.SysUserEntity;
+import com.xmb.auth.exception.AuthException;
 import com.xmb.auth.oauth2.TokenGenerator;
 import com.xmb.auth.utils.RedisKeys;
 import com.xmb.common.utils.RedisUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authc.UsernamePasswordToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+
 import java.util.Date;
 
 @Slf4j
@@ -72,6 +74,57 @@ public class SysUserTokenServiceImpl implements SysUserTokenService {
 		}
 
 		return tokenDto;
+	}
+
+	/**
+	 * 保存用户token
+	 * @param sysUserEntity
+	 * @param token
+	 */
+	@Override
+	public void saveUserToken(SysUserEntity sysUserEntity, String token) {
+
+		redisUtils.set(RedisKeys.AUTH_USER + sysUserEntity.getId(), sysUserEntity);
+		redisUtils.set(RedisKeys.AUTH_TOKEN + token, sysUserEntity.getId());
+	}
+
+	/**
+	 * 根据token查询用户
+	 * @return
+	 */
+	@Override
+	public SysUserEntity getUserByToken(String token) {
+
+		String userIdString = redisUtils.get(RedisKeys.AUTH_TOKEN + token);
+		if (StringUtils.isEmpty(userIdString)) {
+
+			throw AuthException.TOKEN_OUT_TIME;
+		} else {
+
+			SysUserEntity sysUserEntity = redisUtils.get(RedisKeys.AUTH_USER + userIdString, SysUserEntity.class);
+
+			if (sysUserEntity == null) {
+
+				throw AuthException.TOKEN_OUT_TIME;
+			}
+
+			return sysUserEntity;
+		}
+	}
+
+	/**
+	 * 删除用户token
+	 * @param sysUserEntity
+	 */
+	@Override
+	public void deleteUserToken(SysUserEntity sysUserEntity) {
+
+		redisUtils.delete(RedisKeys.AUTH_USER + sysUserEntity.getId());
+		String token = SecurityUtils.getSubject().getSession().getId().toString();
+		if (!StringUtils.isEmpty(token)) {
+
+			redisUtils.delete(RedisKeys.AUTH_TOKEN + token);
+		}
 	}
 
 	/**
