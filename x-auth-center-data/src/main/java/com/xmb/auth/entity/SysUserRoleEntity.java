@@ -1,48 +1,33 @@
-package com.xmb.auth.auth.entity;
+package com.xmb.auth.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
 import java.io.Serializable;
 import java.util.Date;
 import lombok.Data;
 
 /**
- * 权限表
+ * 用户角色表
  * 
  * @author Ben
  * @email 
  * @date 2020-05-04 19:46:47
  */
 @Data
-@TableName("sys_permission")
-public class SysPermissionEntity implements Serializable {
+@TableName("sys_user_role")
+public class SysUserRoleEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 主键id
+	 * 用户id
 	 */
 	@TableId
-	private Long id;
+	private Long userId;
 	/**
-	 * parent id
+	 * 角色id
 	 */
-	private Long parentId;
-	/**
-	 * 权限名称
-	 */
-	private String name;
-	/**
-	 * 权限类型
-	 */
-	private String type;
-	/**
-	 * 权限
-	 */
-	private String permission;
-	/**
-	 * URL
-	 */
-	private String url;
+	private Long roleId;
 	/**
 	 * 录入时间
 	 */

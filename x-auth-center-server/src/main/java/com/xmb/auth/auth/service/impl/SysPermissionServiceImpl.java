@@ -3,7 +3,7 @@ package com.xmb.auth.auth.service.impl;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xmb.auth.auth.dao.SysPermissionDao;
-import com.xmb.auth.auth.entity.SysPermissionEntity;
+import com.xmb.auth.entity.SysPermissionEntity;
 import com.xmb.auth.auth.service.SysPermissionService;
 
 import java.util.List;

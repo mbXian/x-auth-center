@@ -4,7 +4,7 @@
 <mapper namespace="com.xmb.auth.auth.dao.SysPermissionDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.xmb.auth.auth.entity.SysPermissionEntity" id="sysPermissionMap">
+    <resultMap type="com.xmb.auth.entity.SysPermissionEntity" id="sysPermissionMap">
         <result property="id" column="id"/>
         <result property="parentId" column="parent_id"/>
         <result property="name" column="name"/>
@@ -16,7 +16,7 @@
         <result property="deleted" column="deleted"/>
     </resultMap>
 
-    <select id="selectSysPermissionByRoleId" resultType="com.xmb.auth.auth.entity.SysPermissionEntity">
+    <select id="selectSysPermissionByRoleId" resultType="com.xmb.auth.entity.SysPermissionEntity">
 
         SELECT
             sp.*

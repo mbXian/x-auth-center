@@ -1,4 +1,4 @@
-package com.xmb.auth.auth.entity;
+package com.xmb.auth.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
@@ -8,26 +8,50 @@ import java.util.Date;
 import lombok.Data;
 
 /**
- * 用户角色表
+ * 用户表
  * 
  * @author Ben
  * @email 
  * @date 2020-05-04 19:46:47
  */
 @Data
-@TableName("sys_user_role")
-public class SysUserRoleEntity implements Serializable {
+@TableName("sys_user")
+public class SysUserEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * 用户id
+	 * 主键id
 	 */
 	@TableId
-	private Long userId;
+	private Long id;
 	/**
-	 * 角色id
+	 * 用户名
 	 */
-	private Long roleId;
+	private String userName;
+	/**
+	 * 名称
+	 */
+	private String name;
+	/**
+	 * 手机号
+	 */
+	private String mobile;
+	/**
+	 * 盐
+	 */
+	private String salt;
+	/**
+	 * 密码（MD5）
+	 */
+	private String password;
+	/**
+	 * 年龄
+	 */
+	private Integer age;
+	/**
+	 * 邮箱
+	 */
+	private String email;
 	/**
 	 * 录入时间
 	 */

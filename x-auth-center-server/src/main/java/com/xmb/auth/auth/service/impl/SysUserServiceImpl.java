@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xmb.auth.auth.dto.SysUserLoginDto;
 import com.xmb.auth.auth.dto.SysUserTokenDto;
-import com.xmb.auth.auth.entity.SysUserEntity;
+import com.xmb.auth.entity.SysUserEntity;
 import com.xmb.auth.auth.service.SysUserTokenService;
 import com.xmb.auth.exception.AuthException;
 import com.xmb.common.utils.MD5Utils;

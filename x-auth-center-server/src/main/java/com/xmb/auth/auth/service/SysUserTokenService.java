@@ -10,7 +10,7 @@ package com.xmb.auth.auth.service;
 
 
 import com.xmb.auth.auth.dto.SysUserTokenDto;
-import com.xmb.auth.auth.entity.SysUserEntity;
+import com.xmb.auth.entity.SysUserEntity;
 
 /**
  * 用户Token

@@ -4,7 +4,7 @@
 <mapper namespace="com.xmb.auth.auth.dao.SysUserRoleDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.xmb.auth.auth.entity.SysUserRoleEntity" id="sysUserRoleMap">
+    <resultMap type="com.xmb.auth.entity.SysUserRoleEntity" id="sysUserRoleMap">
         <result property="userId" column="user_id"/>
         <result property="roleId" column="role_id"/>
         <result property="createTime" column="create_time"/>

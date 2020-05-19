@@ -1,7 +1,8 @@
 package com.xmb.auth.controller;
 
-import com.xmb.auth.auth.entity.SysUserEntity;
-import com.xmb.auth.auth.service.SysUserTokenService;
+import com.xmb.auth.ShiroApiService;
+import com.xmb.auth.auth.dto.GetUserByTokenDTO;
+import com.xmb.auth.entity.SysUserEntity;
 import com.xmb.auth.exception.AuthException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 public class BaseController {
 
     @Autowired
-    private SysUserTokenService sysUserTokenService;
+    private ShiroApiService shiroApiService;
 
     protected SysUserEntity getUser() {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
@@ -28,7 +29,10 @@ public class BaseController {
             throw AuthException.PARAM_ERROR;
         }
 
-        SysUserEntity sysUserEntity = sysUserTokenService.getUserByToken(token);
+        GetUserByTokenDTO getUserByTokenDTO = new GetUserByTokenDTO();
+        getUserByTokenDTO.setToken(token);
+
+        SysUserEntity sysUserEntity = shiroApiService.getUserByToken(getUserByTokenDTO);
         if (sysUserEntity == null) {
 
             throw AuthException.TOKEN_OUT_TIME;

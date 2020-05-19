@@ -10,7 +10,7 @@ package com.xmb.auth.auth.service.impl;
 
 import com.xmb.auth.auth.dto.SysUserTokenDto;
 import com.xmb.auth.auth.service.SysUserTokenService;
-import com.xmb.auth.auth.entity.SysUserEntity;
+import com.xmb.auth.entity.SysUserEntity;
 import com.xmb.auth.exception.AuthException;
 import com.xmb.auth.oauth2.TokenGenerator;
 import com.xmb.auth.utils.RedisKeys;

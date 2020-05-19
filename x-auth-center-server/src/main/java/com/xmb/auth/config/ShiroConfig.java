@@ -136,6 +136,7 @@ public class ShiroConfig {
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
 //        filterChainDefinitionMap.put("/swagger-ui/**", "anon");
         filterChainDefinitionMap.put("/auth/sysuser/login", "anon");
+        filterChainDefinitionMap.put("/api/", "anon");
         filterChainDefinitionMap.put("/auth/sysuser/checkUserMobilePassword", "authc");
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);

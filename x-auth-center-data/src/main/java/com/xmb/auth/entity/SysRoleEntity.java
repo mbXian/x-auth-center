@@ -1,4 +1,4 @@
-package com.xmb.auth.auth.entity;
+package com.xmb.auth.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;

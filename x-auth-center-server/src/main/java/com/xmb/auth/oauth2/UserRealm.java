@@ -1,10 +1,10 @@
 package com.xmb.auth.oauth2;
 
 import com.alibaba.fastjson.JSON;
-import com.xmb.auth.auth.entity.SysPermissionEntity;
-import com.xmb.auth.auth.entity.SysRoleEntity;
+import com.xmb.auth.entity.SysPermissionEntity;
+import com.xmb.auth.entity.SysRoleEntity;
 import com.xmb.auth.auth.service.ShiroService;
-import com.xmb.auth.auth.entity.SysUserEntity;
+import com.xmb.auth.entity.SysUserEntity;
 import com.xmb.auth.auth.service.SysPermissionService;
 import com.xmb.auth.auth.service.SysRoleService;
 import lombok.extern.slf4j.Slf4j;

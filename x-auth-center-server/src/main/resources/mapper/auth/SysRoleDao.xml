@@ -4,7 +4,7 @@
 <mapper namespace="com.xmb.auth.auth.dao.SysRoleDao">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.xmb.auth.auth.entity.SysRoleEntity" id="sysRoleMap">
+    <resultMap type="com.xmb.auth.entity.SysRoleEntity" id="sysRoleMap">
         <result property="id" column="id"/>
         <result property="roleName" column="role_name"/>
         <result property="createTime" column="create_time"/>
@@ -12,7 +12,7 @@
         <result property="deleted" column="deleted"/>
     </resultMap>
 
-    <select id="selectSysRoleByUserId" resultType="com.xmb.auth.auth.entity.SysRoleEntity">
+    <select id="selectSysRoleByUserId" resultType="com.xmb.auth.entity.SysRoleEntity">
         SELECT
             sr.*
         FROM

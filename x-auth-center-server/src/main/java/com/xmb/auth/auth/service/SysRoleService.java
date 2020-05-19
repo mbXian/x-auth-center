@@ -1,7 +1,7 @@
 package com.xmb.auth.auth.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.xmb.auth.auth.entity.SysRoleEntity;
+import com.xmb.auth.entity.SysRoleEntity;
 
 import java.util.List;
 

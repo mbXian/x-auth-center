@@ -1,29 +1,26 @@
 package com.xmb.auth;
 
-import com.xmb.auth.auth.dto.SysUserTokenDto;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.xmb.auth.auth.dto.GetUserByTokenDTO;
+import com.xmb.auth.entity.SysUserEntity;
+import io.swagger.annotations.Api;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author Ben
  * @date 2020-05-06
  * @desc
  */
-@FeignClient(value = "x-auth-center",contextId = "shiroApi", path = "api/shiro")
+@FeignClient(value = "x-auth-center",contextId = "shiroApi", path = "api/auth/shiro")
+@Api(description = "Shiro模块")
 public interface ShiroApiService {
 
     /**
-     * 从Redis中获取用户信息
-     * @param token
+     * 根据token查询用户
+     * @param getUserByTokenDTO
      * @return
      */
-    @RequestMapping("queryByToken")
-    SysUserTokenDto queryByToken(@RequestParam("token") String token);
+    @RequestMapping("/getUserByToken")
+    SysUserEntity getUserByToken(@RequestBody GetUserByTokenDTO getUserByTokenDTO);
 }

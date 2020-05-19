@@ -8,12 +8,11 @@
 
 package com.xmb.auth.auth.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.xmb.auth.auth.dto.SysUserTokenDto;
 import com.xmb.auth.auth.service.ShiroService;
 import com.xmb.auth.auth.service.SysUserRoleService;
 import com.xmb.auth.auth.service.SysUserService;
-import com.xmb.auth.auth.entity.SysUserEntity;
+import com.xmb.auth.entity.SysUserEntity;
 import com.xmb.auth.exception.AuthException;
 import com.xmb.auth.utils.RedisKeys;
 import com.xmb.common.utils.RedisUtils;

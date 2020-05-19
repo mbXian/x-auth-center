@@ -1,6 +1,6 @@
 package com.xmb.auth.auth.dao;
 
-import com.xmb.auth.auth.entity.SysPermissionEntity;
+import com.xmb.auth.entity.SysPermissionEntity;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;

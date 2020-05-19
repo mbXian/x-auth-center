@@ -1,6 +1,6 @@
 package com.xmb.auth.auth.service.impl;
 
-import com.xmb.auth.auth.entity.SysUserRoleEntity;
+import com.xmb.auth.entity.SysUserRoleEntity;
 import org.springframework.stereotype.Service;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xmb.auth.auth.dao.SysUserRoleDao;
