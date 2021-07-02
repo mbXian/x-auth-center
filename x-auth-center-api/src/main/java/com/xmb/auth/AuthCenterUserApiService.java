@@ -1,7 +1,9 @@
 package com.xmb.auth;
 
 import com.xmb.auth.auth.dto.CheckoutPasswordDTO;
+import com.xmb.auth.auth.dto.UserInfoSaveOrUpdateDTO;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,4 +24,12 @@ public interface AuthCenterUserApiService {
      */
     @RequestMapping("/checkUserMobilePassword")
     boolean checkUserMobilePassword(@RequestBody CheckoutPasswordDTO checkoutPasswordDTO);
+
+    /**
+     * 新增或修改用户信息
+     * @param userInfoSaveOrUpdateDTO
+     */
+    @RequestMapping("/saveOrUpdateUserInfo")
+    void saveOrUpdateUserInfo(@RequestBody UserInfoSaveOrUpdateDTO userInfoSaveOrUpdateDTO);
+
 }

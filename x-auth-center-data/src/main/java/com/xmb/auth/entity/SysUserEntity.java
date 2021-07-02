@@ -29,9 +29,9 @@ public class SysUserEntity implements Serializable {
 	 */
 	private String userName;
 	/**
-	 * 名称
+	 * 昵称
 	 */
-	private String name;
+	private String nickName;
 	/**
 	 * 手机号
 	 */
@@ -52,6 +52,14 @@ public class SysUserEntity implements Serializable {
 	 * 邮箱
 	 */
 	private String email;
+	/**
+	 * 头像
+	 */
+	private String avatar;
+	/**
+	 * openId
+	 */
+	private String openId;
 	/**
 	 * 录入时间
 	 */

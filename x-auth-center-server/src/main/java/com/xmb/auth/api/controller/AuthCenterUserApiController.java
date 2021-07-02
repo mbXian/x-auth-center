@@ -2,9 +2,11 @@ package com.xmb.auth.api.controller;
 
 import com.xmb.auth.AuthCenterUserApiService;
 import com.xmb.auth.auth.dto.CheckoutPasswordDTO;
+import com.xmb.auth.auth.dto.UserInfoSaveOrUpdateDTO;
 import com.xmb.auth.auth.service.SysUserService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,4 +28,12 @@ public class AuthCenterUserApiController implements AuthCenterUserApiService {
 
         return sysUserService.checkUserMobilePassword(checkoutPasswordDTO.getMobile(), checkoutPasswordDTO.getPassword());
     }
+
+    @ApiOperation("新增或修改用户信息")
+    @RequestMapping("/saveOrUpdateUserInfo")
+    @Override
+    public void saveOrUpdateUserInfo(@RequestBody UserInfoSaveOrUpdateDTO userInfoSaveOrUpdateDTO) {
+        sysUserService.saveOrUpdateUserInfo(userInfoSaveOrUpdateDTO);
+    }
+
 }

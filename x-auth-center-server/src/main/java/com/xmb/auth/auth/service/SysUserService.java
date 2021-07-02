@@ -3,6 +3,7 @@ package com.xmb.auth.auth.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.xmb.auth.auth.dto.SysUserLoginDto;
 import com.xmb.auth.auth.dto.SysUserTokenDto;
+import com.xmb.auth.auth.dto.UserInfoSaveOrUpdateDTO;
 import com.xmb.auth.entity.SysUserEntity;
 
 /**
@@ -47,5 +48,13 @@ public interface SysUserService extends IService<SysUserEntity> {
      * @Return SysUserEntity 用户实体
      */
     SysUserEntity selectUserByName(String username);
+
+    /**
+     * 新增或修改用户信息
+     * @param userInfoSaveOrUpdateDTO
+     * @return
+     */
+    SysUserEntity saveOrUpdateUserInfo(UserInfoSaveOrUpdateDTO userInfoSaveOrUpdateDTO);
+
 }
 

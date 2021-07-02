@@ -1,9 +1,11 @@
 package com.xmb.auth.auth.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.xmb.auth.auth.dto.SysUserLoginDto;
 import com.xmb.auth.auth.dto.SysUserTokenDto;
+import com.xmb.auth.auth.dto.UserInfoSaveOrUpdateDTO;
 import com.xmb.auth.entity.SysUserEntity;
 import com.xmb.auth.auth.service.SysUserTokenService;
 import com.xmb.auth.exception.AuthException;
@@ -121,4 +123,40 @@ public class SysUserServiceImpl extends ServiceImpl<SysUserDao, SysUserEntity> i
         queryWrapper.eq("user_name", username);
         return getOne(queryWrapper);
     }
+
+    @Override
+    public SysUserEntity saveOrUpdateUserInfo(UserInfoSaveOrUpdateDTO userInfoSaveOrUpdateDTO) {
+        SysUserEntity sysUserEntity = null;
+        if (userInfoSaveOrUpdateDTO.getId() != null) {
+            sysUserEntity = getById(userInfoSaveOrUpdateDTO.getId());
+        }
+        if (sysUserEntity == null && !StringUtils.isEmpty(userInfoSaveOrUpdateDTO.getMobile())) {
+            sysUserEntity = getOne(Wrappers.<SysUserEntity>query().lambda().eq(SysUserEntity::getMobile, userInfoSaveOrUpdateDTO.getMobile()));
+        }
+        if (sysUserEntity == null && !StringUtils.isEmpty(userInfoSaveOrUpdateDTO.getUserName())) {
+            sysUserEntity = getOne(Wrappers.<SysUserEntity>query().lambda().eq(SysUserEntity::getUserName, userInfoSaveOrUpdateDTO.getUserName()));
+        }
+        if (sysUserEntity == null && !StringUtils.isEmpty(userInfoSaveOrUpdateDTO.getOpenId())) {
+            sysUserEntity = getOne(Wrappers.<SysUserEntity>query().lambda().eq(SysUserEntity::getOpenId, userInfoSaveOrUpdateDTO.getOpenId()));
+        }
+        if (sysUserEntity != null) {
+            if (!StringUtils.isEmpty(userInfoSaveOrUpdateDTO.getUserName())) {
+                sysUserEntity.setUserName(userInfoSaveOrUpdateDTO.getUserName());
+            }
+            if (!StringUtils.isEmpty(userInfoSaveOrUpdateDTO.getNickName())) {
+                sysUserEntity.setNickName(userInfoSaveOrUpdateDTO.getNickName());
+            }
+            if (!StringUtils.isEmpty(userInfoSaveOrUpdateDTO.getMobile())) {
+                sysUserEntity.setMobile(userInfoSaveOrUpdateDTO.getMobile());
+            }
+            if (!StringUtils.isEmpty(userInfoSaveOrUpdateDTO.getOpenId())) {
+                sysUserEntity.setOpenId(userInfoSaveOrUpdateDTO.getOpenId());
+            }
+            if (!StringUtils.isEmpty(userInfoSaveOrUpdateDTO.getAvatar())) {
+                sysUserEntity.setAvatar(userInfoSaveOrUpdateDTO.getAvatar());
+            }
+        }
+        return null;
+    }
+
 }
